@@ -8,7 +8,7 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('styles', function () {
     gulp.src("./src/scss/style.scss") // Consigue la ubicación de los archivos
-   .pipe(sass().on('error', sass.logError)) // Notificaciones de error
+   .pipe(sass()).on('error', notify.onError(function (error) { return 'Error al compilar sass.\n Detalles en la consola.\n' + error; })) // Manejo de error
    .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false })) // Autoprefijar propiedades CSS
    .pipe(gulp.dest("./dist/css/")) // Guarda los archivos ya procesados
    // Notificaciones confirmando el proceso
