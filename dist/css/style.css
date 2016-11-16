@@ -1,0 +1,22 @@
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.container {
+  margin: 0 auto;
+  width: 1024px;
+  padding-top: 50px;
+  text-align: center; }
+
+h1 {
+  font-size: 29px;
+  text-align: center;
+  color: tomato; }
+
+p {
+  font-size: 20px;
+  display: -ms-flexbox;
+  display: flex; }
