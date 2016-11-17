@@ -1,29 +1,48 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var notify = require('gulp-notify');
-var browserSync = require('browser-sync').create();
 
+ /* ======================================================================================================
+ * Plugins utilizados
+ * ======================================================================================================*/
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    notify = require('gulp-notify'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    browserSync = require('browser-sync').create();
 
-
+ /* ======================================================================================================
+ * Tarea sobre los Syilos
+ * ======================================================================================================*/
 gulp.task('styles', function () {
-    gulp.src("./src/scss/style.scss") // Consigue la ubicación de los archivos
-   .pipe(sass()).on('error', notify.onError(function (error) { return 'Error al compilar sass.\n Detalles en la consola.\n' + error; })) // Manejo de error
-   .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false })) // Autoprefijar propiedades CSS
-   .pipe(gulp.dest("./dist/css/")) // Guarda los archivos ya procesados
-   // Notificaciones confirmando el proceso
-   .pipe(notify({
-      title: "SASS",
-      message: "OK: Archivo compilado" // Mensaje a mostrar
-   }))
-   .pipe(browserSync.stream()); // Recarga el navegador web cuando termina el proceso de estilos
+    gulp.src("./src/scss/*.scss")
+    .pipe(sass()).on('error', notify.onError(function (error) {
+       return 'Error al compilar sass.\n Detalles en la consola.\n' + error;
+    }))
+   .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
+   .pipe(gulp.dest("./dist/css/"))
+   .pipe(notify({ title: "SASS", message: "OK: Archivo compilado" }))
+   .pipe(browserSync.stream());
 });
 
+ /* ======================================================================================================
+ * Tarea sobre los Scripts
+ * ======================================================================================================*/
+gulp.task('scripts', function() {
+    return gulp.src('./src/js/*.js')
+    .pipe(concat('all.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./dist/js/'));
+});
 
+ /* ======================================================================================================
+ * Tarea por default
+ * ======================================================================================================*/
 gulp.task('default', function () {
-   browserSync.init({
-       server: "./", // Lift current folder web server
-   });
-  gulp.watch('src/scss/*.scss', ['styles']); // Vigila cambios en los estilos
-  gulp.watch("*.html").on("change", browserSync.reload); //  Recarga en cambios de los HTML
+    browserSync.init({
+        injectChanges: true,
+        "files": ['*.html', './dist/**/*.{html,css,js}'],
+        server: "./",
+    });
+    gulp.watch('./src/scss/*.scss', ['styles']); // Vigila cambios en los estilos
+    gulp.watch('./src/js/*.js', ['scripts']);
 });
