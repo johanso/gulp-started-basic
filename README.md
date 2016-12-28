@@ -3,6 +3,7 @@
 - Automatizador ('gulp')
 - Compilar sass ('gulp-sass')
 - Autoprefijar propiedades que lo requieran ('gulp-autoprefixer')
+- sourcemaps depurar (trabajar) con Sass desde el navegador ('gulp-sourcemaps')
 - Notificaciones de los procesos ('gulp-notify')
 - Concatenar los archivos js ('gulp-concat')
 - Comprime el archivo js concatenado ('gulp-uglify')
