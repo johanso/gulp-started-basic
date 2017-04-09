@@ -17,7 +17,11 @@ var gulp = require('gulp'),
 gulp.task('styles', function () {
     gulp.src("./src/scss/*.scss")
     .pipe(sourcemaps.init())
-    .pipe(sass()).on('error', notify.onError(function (error) {
+    .pipe( sass({
+            includePaths: require('node-bourbon').includePaths,
+            style: 'compressed',
+          })
+    ).on('error', notify.onError(function (error) {
        return 'Error al compilar sass.\n Detalles en la consola.\n' + error;
     }))
    .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
