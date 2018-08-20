@@ -17,10 +17,7 @@ var gulp = require('gulp'),
 gulp.task('styles', function () {
     gulp.src("./src/scss/*.scss")
     .pipe(sourcemaps.init())
-    .pipe( sass({
-            includePaths: require('node-bourbon').includePaths,
-            style: 'compressed',
-          })
+    .pipe( sass({ style: 'compressed' })
     ).on('error', notify.onError(function (error) {
        return 'Error al compilar sass.\n Detalles en la consola.\n' + error;
     }))
