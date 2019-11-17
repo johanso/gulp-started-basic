@@ -27,5 +27,9 @@
     "gulp-terser": "^1.2.0",
     "gulp-webserver": "^0.9.1",
     "postcss-assets": "^5.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "lodash.template": "^4.5.0"
   }
 }
