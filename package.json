@@ -1,21 +1,31 @@
 {
-  "name": "gulp-start-basic",
+  "name": "portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "My personal porfolio",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Johanso",
+  "author": "Johan Ricardo",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.18.1",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
+    "autoprefixer": "^9.7.1",
+    "browser-sync": "^2.26.7",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
-    "gulp-notify": "^2.2.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^1.9.1",
-    "gulp-uglify": "^2.0.0"
+    "gulp-deporder": "^1.2.0",
+    "gulp-htmlclean": "^2.7.22",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-noop": "^1.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-debug": "^3.0.0",
+    "gulp-terser": "^1.2.0",
+    "gulp-webserver": "^0.9.1",
+    "postcss-assets": "^5.0.0"
   }
 }
